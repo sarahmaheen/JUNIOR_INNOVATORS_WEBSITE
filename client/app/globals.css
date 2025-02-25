@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Cairo:wght@400;700&display=swap');
+
+:root {
+  --background: 245, 245, 243;
+  --foreground: 46, 46, 46;
+  --mexican-red: 169, 34, 35;
+  --pink: 212, 140, 148;
+  --teal-blue: 30, 61, 93;
+  --new-gray: 239, 240, 243;
+  --button-font-color: 102, 16, 242;
+  --light-gray: 239, 240, 243;
+
+
+  --font-tajawal: 'Tajawal', sans-serif;
+  --font-cairo: 'Cairo', sans-serif;
+}
+
+body {
+  font-family: var(--font-tajawal);
+  background-color: rgb(var(--background));
+  color: rgb(var(--foreground));
+}
+
+
+@keyframes scrollText {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scrollText 100s linear infinite;
+}
+
