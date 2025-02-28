@@ -146,7 +146,6 @@ const courses = [
 
 
 
-
 export default function CoursesPage() {
   const containerRef = useRef(null);
   const cardsRef = useRef([]);
@@ -155,54 +154,65 @@ export default function CoursesPage() {
     let ctx = gsap.context(() => {
       gsap.fromTo(
         cardsRef.current,
-        { opacity: 0, x: -50 }, // Reduce x-offset to prevent mobile disappearing issue
+        { opacity: 0, y: 50 },
         {
           opacity: 1,
-          x: 0,
+          y: 0,
           duration: 0.8,
           ease: "power2.out",
           stagger: 0.2,
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 90%", // Adjusted trigger for better mobile experience
-            end: "bottom 20%", // Ensures animation stays visible longer
-            toggleActions: "play none none none", // Prevents unwanted reversing
-            once: true, // Ensures animation runs only once per scroll
+            start: "top 90%",
+            end: "bottom 20%",
+            toggleActions: "play none none none",
+            once: true,
           },
         }
       );
     }, containerRef);
 
-    return () => ctx.revert(); // Cleanup on unmount
+    return () => ctx.revert();
   }, []);
 
   return (
-    <div ref={containerRef} className="p-6 bg-[rgb(var(--light-gray))] text-right rtl">
-      <h1 className="text-4xl font-bold text-center text-[rgb(var(--teal-blue))] mb-8">الدورات المتاحة</h1>
+    <div
+      ref={containerRef}
+      className="relative min-h-screen bg-cover bg-center bg-no-repeat flex flex-col items-center p-6"
+      style={{ backgroundImage: "url('/images/image6.jpg')" }} // Set background image
+    >
+      {/* Overlay for better readability */}
+      <div className="absolute inset-0 bg-rgb(var(--light-gray)) backdrop-blur-md"></div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Title */}
+      <h1 className="relative text-4xl font-bold text-center text-white mb-8 z-10">
+        الدورات المتاحة
+      </h1>
+
+      {/* Course Cards */}
+      <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 z-10">
         {courses.map((course, index) => (
           <div
             key={index}
             ref={(el) => (cardsRef.current[index] = el)}
-            className="flex flex-col justify-between items-center gap-3 bg-white shadow-lg rounded-xl p-6 border border-gray-200"
+            className="flex flex-col justify-between items-center gap-3 p-6 rounded-xl border border-white/30 bg-white/20 backdrop-blur-md shadow-lg"
           >
-            <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-3">{course.title}</h2>
-            <ul className="text-black list-disc rtl:text-right rtl:list-inside">
-  {course.description.map((point, i) => (
-    <li key={i}>{point}</li>
-  ))}
-</ul>
+            <h2 className="text-2xl md:text-3xl font-semibold text-black mb-3">{course.title}</h2>
+            <ul className="text-black list-disc list-inside text-right">
+              {course.description.map((point, i) => (
+                <li key={i}>{point}</li>
+              ))}
+            </ul>
 
             <Button 
-              text={courses.cta}
+              text={course.cta}
               bgColor="bg-black" 
               textColor="text-white" 
-              borderColor="border-black" 
+              borderColor="border-white/50" 
               px="px-8" 
               py="py-4" 
-              hoverBgColor="hover:bg-[rgb(var(--teal-blue))]" 
-              hoverTextColor="hover:text-white" 
+              hoverBgColor="hover:bg-white" 
+              hoverTextColor="hover:text-black" 
             />
           </div>
         ))}

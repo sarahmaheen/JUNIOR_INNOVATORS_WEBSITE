@@ -73,15 +73,15 @@ export default function GetInTouch() {
       <div className="flex justify-center items-center">
         <h1
           ref={titleRef}
-          className="text-6xl md:text-[15rem] font-bold uppercase tracking-widest text-center"
-          style={{ WebkitTextStroke: "2px rgb(var(--mexican-red))", color: "transparent" }}
+          className="text-6xl md:text-[15rem] font-bold   tracking-widest text-center"
+          style={{ WebkitTextStroke: "1px rgb(var(--mexican-red))", color: "transparent" }}
         >
           تواصل معنا
         </h1>
       </div>
 
       {/* Second Div: Links Section */}
-      <div className="flex flex-col md:flex-row items-center justify-between bg-black p-8 rounded-lg gap-8">
+      <div className="flex flex-col md:flex-row items-center justify-between bg-black p-8 rounded-2xl gap-8">
         {/* Social Media Links */}
         <div className="flex-1 flex flex-col  space-y-4 md:space-y-0 md:space-x-6 text-center">
           {[
