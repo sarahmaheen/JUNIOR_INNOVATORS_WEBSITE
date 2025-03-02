@@ -747,9 +747,9 @@ export default function Home() {
         {/* Right Section (Text) */}
         <div
           ref={textRef}
-          className="w-full md:w-1/2 h-full flex flex-col justify-end items-end  md:justify-center  md:px-16 gap-4 opacity-0 text-right "
+          className="w-full md:w-1/2 rounded-2xl h-full flex flex-col justify-end items-end  md:justify-center  md:px-16 gap-4 opacity-0 text-right "
         >
-<h1 className="text-black text-[clamp(2rem, 5vw, 4rem)] font-bold leading-tight font-tajawal md:text-4xl md:py-6">
+<h1 className="text-black bg-white  rounded-3xl text-[clamp(2rem, 5vw, 4rem)] font-bold leading-tight font-tajawal md:text-4xl p-4 md:p-6">
 {headings[activeIndex]}
           </h1>
 
@@ -796,7 +796,7 @@ export default function Home() {
       <AboutPage />
       <MeetOurTeam/>
       <HowToGetStart />
-      <CoursesPage />
+      {/* <CoursesPage /> */}
       <AwwwardsSection/>
       <PeoplePage />
       {/* <Testimonials /> */}

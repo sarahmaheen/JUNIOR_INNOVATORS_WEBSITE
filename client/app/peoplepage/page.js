@@ -348,6 +348,130 @@
 
 
 
+// "use client";
+
+// import { useEffect, useRef } from "react";
+// import gsap from "gsap";
+
+// // Sample images (Replace with your own URLs)
+// const images = [
+//   "./images/image1.jpg",
+//   "./images/image2.jpg",
+//   "./images/image3.jpg",
+//   "./images/image4.jpg",
+//   "./images/image5.jpg",
+//   "./images/image6.jpg",
+// ];
+
+// export default function ImageGallery() {
+//   const galleryRef = useRef(null);
+
+//   useEffect(() => {
+//     if (galleryRef.current) {
+//       gsap.to(galleryRef.current, {
+//         y: "-100%",
+//         duration: 20,
+//         ease: "linear",
+//         repeat: -1,
+//       });
+//     }
+//   }, []);
+
+//   return (
+//     <section className="flex flex-col md:flex-row-reverse h-auto  md:h-screen w-auto bg-[rgb(var(--mexican-red))] gap-4 m-4 p-4 rounded-2xl">
+//       {/* 🔹 Heading Section */}
+//       <div className="flex justify-center items-center  ">
+//         <h2 className="text-6xl font-bold text-white">🌍 معرض الصور</h2>
+//       </div>
+
+//       {/* 🔹 Scrolling Gallery Section with Overlapping Blocks */}
+//       <div className="relative flex justify-center items-center  overflow-hidden bg-transparent">
+//         {/* Vertical Scrolling Images */}
+//         <div className="w-full h-full overflow-hidden relative">
+//           <div ref={galleryRef} className="flex flex-col gap-4">
+//             {[...images, ...images].map((img, idx) => (
+//               <img
+//                 key={idx}
+//                 src={img}
+//                 alt={`Gallery ${idx}`}
+//                 className="w-full h-auto rounded-lg shadow-md"
+//               />
+//             ))}
+//           </div>
+
+//           {/* 🔹 Overlapping Content Blocks */}
+//           <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-between pointer-events-none">
+//             {/* Block 1 */}
+//             <div className="bg-white p-4 shadow-xl rounded-lg w-3/4 md:w-2/3 lg:w-1/2 absolute top-[10%] left-[5%]">
+//               <h3 className="text-2xl font-semibold text-gray-800">لحظات لا تُنسى</h3>
+//               <p className="text-gray-600 text-sm mt-1">
+//                 بعض من أفضل أعمالنا التي تستحق المشاهدة، حيث تتداخل الإبداع والتكنولوجيا لتقديم لحظات رائعة.
+//               </p>
+//             </div>
+
+//             {/* Block 2 */}
+//             <div className="bg-white p-4 shadow-xl rounded-lg w-3/4 md:w-2/3 lg:w-1/2 absolute top-[30%] right-[5%]">
+//               <h3 className="text-2xl font-semibold text-gray-800">فريقنا في العمل</h3>
+//               <p className="text-gray-800 text-sm mt-1">
+//                 تعرف على الأشخاص وراء هذه التحف الفنية. فريقنا يعمل بشغف لتقديم تجربة بصرية استثنائية.
+//               </p>
+//             </div>
+
+//             {/* Block 3 */}
+//             <div className="bg-white p-4 shadow-xl rounded-lg w-3/4 md:w-2/3 lg:w-1/2 absolute top-[55%] left-[8%]">
+//               <h3 className="text-2xl font-semibold text-gray-800">إبداع بلا حدود</h3>
+//               <p className="text-gray-800 text-sm mt-1">
+//                 تظل رؤيتنا قائمة على دفع حدود الإبداع، لخلق صور تلهم وتبقى في الأذهان.
+//               </p>
+//             </div>
+
+//             {/* Block 4 */}
+//             <div className="bg-white p-4 shadow-xl rounded-lg w-3/4 md:w-2/3 lg:w-1/2 absolute top-[80%] right-[8%]">
+//               <h3 className="text-2xl font-semibold text-gray-800">فن التصوير</h3>
+//               <p className="text-gray-800 text-sm mt-1">
+//                 التقطنا أجمل اللحظات من جميع أنحاء العالم، لتعكس الروعة والجمال في كل صورة.
+//               </p>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* 🔹 Paragraph Section */}
+//       <div className="flex flex-col justify-center items-center   px-10">
+//         <p className="text-2xl text-white text-center max-w-3xl">
+//           استمتع بمجموعتنا الرائعة من الصور المذهلة التي تلهم وتدهش. نحن نقدم لحظات خالدة من الإبداع والفن.
+//           حيث تتداخل الإبداع والتكنولوجيا لتقديم تجربة بصرية استثنائية تدفع حدود الإبداع لتظل محفورة في الذاكرة.
+//         </p>
+//       </div>
+//     </section>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -368,28 +492,35 @@ export default function ImageGallery() {
 
   useEffect(() => {
     if (galleryRef.current) {
-      gsap.to(galleryRef.current, {
-        y: "-100%",
+      const imagesContainer = galleryRef.current;
+      const totalHeight = imagesContainer.scrollHeight / 2; // Half height to loop seamlessly
+
+      gsap.to(imagesContainer, {
+        y: `-=${totalHeight}`,
         duration: 20,
         ease: "linear",
         repeat: -1,
+        modifiers: {
+          y: (y) => {
+            return (parseFloat(y) % totalHeight) + "px"; // Resets position to create loop
+          },
+        },
       });
     }
   }, []);
 
   return (
-    <section className="flex flex-col md:flex-row-reverse h-screen w-auto bg-[rgb(var(--pink))] gap-4 m-8 p-4 rounded-2xl">
+    <section className="flex flex-col md:flex-row-reverse h-[200vh] md:h-screen w-auto bg-[rgb(var(--mexican-red))] gap-4 m-4 p-4 rounded-2xl">
       {/* 🔹 Heading Section */}
-      <div className="flex justify-center items-center  ">
-        <h2 className="text-6xl font-bold text-black">🌍 معرض الصور</h2>
+      <div className="flex justify-center items-center">
+        <h2 className="text-6xl font-bold text-white">🌍 معرض الصور</h2>
       </div>
 
-      {/* 🔹 Scrolling Gallery Section with Overlapping Blocks */}
-      <div className="relative flex justify-center items-center  overflow-hidden bg-gray-200">
-        {/* Vertical Scrolling Images */}
-        <div className="w-[40vw] h-full overflow-hidden relative">
+      {/* 🔹 Scrolling Gallery Section with Infinite Loop and Overlapping Content */}
+      <div className="relative flex justify-center items-center overflow-hidden bg-transparent w-full h-full">
+        <div className="w-full h-full overflow-hidden relative">
           <div ref={galleryRef} className="flex flex-col gap-4">
-            {[...images, ...images].map((img, idx) => (
+            {[...images, ...images, ...images].map((img, idx) => (
               <img
                 key={idx}
                 src={img}
@@ -402,7 +533,7 @@ export default function ImageGallery() {
           {/* 🔹 Overlapping Content Blocks */}
           <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-between pointer-events-none">
             {/* Block 1 */}
-            <div className="bg-white p-4 shadow-xl rounded-lg w-3/4 md:w-2/3 lg:w-1/2 absolute top-[10%] left-[5%]">
+            <div className="bg-white p-4 shadow-xl rounded-lg w-4/5 md:w-2/3 lg:w-1/2 absolute top-[10%] left-[5%]">
               <h3 className="text-2xl font-semibold text-gray-800">لحظات لا تُنسى</h3>
               <p className="text-gray-600 text-sm mt-1">
                 بعض من أفضل أعمالنا التي تستحق المشاهدة، حيث تتداخل الإبداع والتكنولوجيا لتقديم لحظات رائعة.
@@ -410,7 +541,7 @@ export default function ImageGallery() {
             </div>
 
             {/* Block 2 */}
-            <div className="bg-white p-4 shadow-xl rounded-lg w-3/4 md:w-2/3 lg:w-1/2 absolute top-[30%] right-[5%]">
+            <div className="bg-white p-4 shadow-xl rounded-lg w-4/5 md:w-2/3 lg:w-1/2 absolute top-[30%] right-[5%]">
               <h3 className="text-2xl font-semibold text-gray-800">فريقنا في العمل</h3>
               <p className="text-gray-800 text-sm mt-1">
                 تعرف على الأشخاص وراء هذه التحف الفنية. فريقنا يعمل بشغف لتقديم تجربة بصرية استثنائية.
@@ -418,7 +549,7 @@ export default function ImageGallery() {
             </div>
 
             {/* Block 3 */}
-            <div className="bg-white p-4 shadow-xl rounded-lg w-3/4 md:w-2/3 lg:w-1/2 absolute top-[55%] left-[8%]">
+            <div className="bg-white p-4 shadow-xl rounded-lg w-4/5 md:w-2/3 lg:w-1/2 absolute top-[55%] left-[8%]">
               <h3 className="text-2xl font-semibold text-gray-800">إبداع بلا حدود</h3>
               <p className="text-gray-800 text-sm mt-1">
                 تظل رؤيتنا قائمة على دفع حدود الإبداع، لخلق صور تلهم وتبقى في الأذهان.
@@ -426,7 +557,7 @@ export default function ImageGallery() {
             </div>
 
             {/* Block 4 */}
-            <div className="bg-white p-4 shadow-xl rounded-lg w-3/4 md:w-2/3 lg:w-1/2 absolute top-[80%] right-[8%]">
+            <div className="bg-white p-4 shadow-xl rounded-lg w-4/5 md:w-2/3 lg:w-1/2 absolute top-[80%] right-[8%]">
               <h3 className="text-2xl font-semibold text-gray-800">فن التصوير</h3>
               <p className="text-gray-800 text-sm mt-1">
                 التقطنا أجمل اللحظات من جميع أنحاء العالم، لتعكس الروعة والجمال في كل صورة.
@@ -437,8 +568,8 @@ export default function ImageGallery() {
       </div>
 
       {/* 🔹 Paragraph Section */}
-      <div className="flex flex-col justify-center items-center   px-10">
-        <p className="text-2xl text-gray-800 text-center max-w-3xl">
+      <div className="flex flex-col justify-center items-center px-10">
+        <p className="text-2xl text-white text-center max-w-3xl">
           استمتع بمجموعتنا الرائعة من الصور المذهلة التي تلهم وتدهش. نحن نقدم لحظات خالدة من الإبداع والفن.
           حيث تتداخل الإبداع والتكنولوجيا لتقديم تجربة بصرية استثنائية تدفع حدود الإبداع لتظل محفورة في الذاكرة.
         </p>

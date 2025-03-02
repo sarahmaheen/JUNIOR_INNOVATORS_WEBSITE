@@ -83,12 +83,33 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "المبتكرون الصغار",
+  title: "المبتكرون الصغار | تعلم البرمجة والإلكترونيات للأطفال",
   description: "تم إنشاء هذا التطبيق باستخدام Next.js لتقديم تجربة حديثة وسريعة.",
+  keywords: "تعلم البرمجة, الإلكترونيات, الروبوتات, الأردوينو, الأطفال, تكنولوجيا المستقبل",
   icons: {
-    icon: "/favicon.ico", // ✅ Path to your favicon in the public folder
-    shortcut: "/favicon.ico", // ✅ Optional, for better browser support
-    apple: "/favicon.ico", // ✅ Optional, for Apple devices
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
+  openGraph: {
+    title: "المبتكرون الصغار | تعلم البرمجة والإلكترونيات للأطفال",
+    description: "تمتع بتجربة تعليمية تفاعلية للأطفال في البرمجة والإلكترونيات والروبوتات.",
+    url: "https://yourwebsite.com", // Replace with your actual website URL
+    type: "website",
+    images: [
+      {
+        url: "/images/seo-default.jpg", // ✅ Ensure this image exists in the public folder
+        width: 1200,
+        height: 630,
+        alt: "المبتكرون الصغار - تعلم البرمجة والإلكترونيات للأطفال",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "المبتكرون الصغار | تعلم البرمجة والإلكترونيات للأطفال",
+    description: "تمتع بتجربة تعليمية تفاعلية للأطفال في البرمجة والإلكترونيات والروبوتات.",
+    images: "/images/seo-default.jpg",
   },
 };
 
@@ -104,3 +125,20 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

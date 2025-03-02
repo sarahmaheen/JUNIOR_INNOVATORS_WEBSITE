@@ -48,9 +48,9 @@ export default function Button({
       href="#"
       ref={buttonRef}
       dir="rtl" // Ensures proper Arabic text flow
-      className={`inline-flex items-center justify-center border rounded-xl overflow-hidden 
+      className={`inline-flex items-center justify-center border rounded-full overflow-hidden 
         transition duration-300 ease-in-out ${bgColor} ${textColor} ${borderColor} 
-        ${hoverBgColor} ${hoverTextColor} md:${px} md:${py} px-4 py-2 text-center text-3xl hover:scale-110`}
+        ${hoverBgColor} ${hoverTextColor} md:${px} md:${py} px-8 py-2 text-center text-3xl hover:scale-110`}
         onClick={onClick}
     >
       <span ref={textRef} className="relative inline-block">

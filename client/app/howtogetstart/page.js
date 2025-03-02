@@ -290,38 +290,7 @@ const steps = [
 ];
 
 export default function HowToGetStart() {
-  // const sectionRef = useRef(null);
-  // const elementsRef = useRef([]);
-
-  // useEffect(() => {
-  //   const ctx = gsap.context(() => {
-  //     // Animation on Page Load
-  //     gsap.fromTo(
-  //       elementsRef.current,
-  //       { opacity: 0, y: 200 },
-  //       { opacity: 1, y: 0, duration: 1, ease: "power2.out", stagger: 0.3 }
-  //     );
-
-  //     // Scroll Trigger Animation when entering viewport (40% from bottom)
-  //     ScrollTrigger.create({
-  //       trigger: sectionRef.current,
-  //       start: "top 95%", // Start animation earlier
-  //         end: "top 50%", // Ends animation faster
-  //       toggleActions: "play none reverse none", // Reverse on scroll up
-  //       onEnter: () => {
-  //         gsap.fromTo(
-  //           elementsRef.current,
-  //           { opacity: 0, y: 200 },
-  //           { opacity: 1, y: 0, duration: 1, ease: "power2.out", stagger: 0.3 }
-  //         );
-  //       },
-  //     });
-  //   });
-
-  //   return () => ctx.revert(); // Cleanup animation when component unmounts
-  // }, []);
-
-
+  
 
   const sectionRef = useRef(null);
 const elementsRef = useRef([]);
@@ -331,8 +300,8 @@ useEffect(() => {
     // Animation on Page Load
     gsap.fromTo(
       elementsRef.current,
-      { opacity: 0, y: 200 },
-      { opacity: 1, y: 0, duration: 1, ease: "power2.out", stagger: 0.3 }
+      { opacity: 0, y: 50 },
+      { opacity: 1, y: 0, duration: 1, ease: "power2.out", stagger: 0.2 }
     );
 
     // Scroll Trigger Animation when entering viewport (40% from bottom)
@@ -344,8 +313,8 @@ useEffect(() => {
       onEnter: () => {
         gsap.fromTo(
           elementsRef.current,
-          { opacity: 0, y: 200 },
-          { opacity: 1, y: 0, duration: 1, ease: "power2.out", stagger: 0.3 }
+          { opacity: 0, y: 50 },
+          { opacity: 1, y: 0, duration: 1, ease: "power2.out", stagger: 0.2 }
         );
       },
     });
@@ -361,7 +330,7 @@ useEffect(() => {
   return (
     <div ref={sectionRef} className="flex flex-col md:flex-row w-full  text-white justify-center items-center" dir="rtl">
       {/* Left Section */}
-      <div className="w-full md:w-[60vw] flex flex-col justify-center items-center p-6 md:p-10 gap-4">
+      <div className="w-full md:w-[60vw] flex flex-col justify-center items-center p-4 md:p-6 gap-4">
         <h1 ref={(el) => (elementsRef.current[0] = el)} className="text-6xl md:text-6xl font-bold text-black text-right">
           كيف تبدأ؟
         </h1>
@@ -371,8 +340,8 @@ useEffect(() => {
             النهضة بتعليم التكنولوجيا في السودان وأن نكون الجهة الأولى التي تقدم تلك الخدمات التكنولوجية؛ الإلكترونيات، البرمجة، والذكاء الاصطناعي.
           </p>
 
-          <div ref={(el) => (elementsRef.current[2] = el)} className="relative w-full md:w-1/2 h-40 md:h-72">
-            <Image src="/images/logo1.png" alt="ابدأ" fill className="object-cover rounded-lg" />
+          <div ref={(el) => (elementsRef.current[2] = el)} className="relative w-full md:w-1/2 h-[40vh]   md:h-[60vh]">
+            <Image src="/images/logo1.png" alt="ابدأ" fill className=" bg-contain rounded-lg" />
           </div>
         </div>
 
@@ -382,19 +351,19 @@ useEffect(() => {
           bgColor="bg-black"
           textColor="text-white"
           borderColor="border-black"
-          px="px-8"
-          py="py-4"
+          px="px-16"
+          py="py-8"
           hoverBgColor="hover:bg-[rgb(var(--light-gray))] "
           hoverTextColor="hover:text-black"
         />
       </div>
 
       {/* Right Section (Cards) */}
-      <div className="w-full md:w-[40vw]  h-[70vh] md:h-[50vh] overflow-y-auto p-6 flex flex-col gap-6 bg-[rgb(var(--teal-blue))]">
+      <div className="w-full md:w-[40vw]  h-[70vh] md:h-[50vh] overflow-y-auto p-4 flex flex-col gap-6 bg-[rgb(var(--teal-blue))]">
         {steps.map((step) => (
           <div
             key={step.id}
-            className="bg-white p-6 rounded-lg text-center sticky top-[2vh] shadow-lg transition-transform duration-300 border-[1px] border-[rgb(var(--teal-blue))]">
+            className="bg-white p-4 rounded-lg text-center sticky top-[2vh] shadow-lg transition-transform duration-300 border-[1px] border-[rgb(var(--teal-blue))]">
             <span className="text-lg font-bold text-[rgb(var(--teal-blue))]">🔹 {step.id}</span>
             <h2 className="text-2xl font-bold mt-2 text-[rgb(var(--teal-blue))]">{step.title}</h2>
             <p className="text-black mt-2 text-lg">{step.description}</p>

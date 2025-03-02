@@ -626,7 +626,7 @@ export default function AboutPage() {
   return (
     <div
       ref={containerRef}
-      className="flex flex-col items-center min-h-screen bg-[rgb(var(--light-gray))] text-gray-800 p-6"
+      className="flex flex-col items-center min-h-screen bg-[rgb(var(--light-gray))] text-gray-800 p-4"
       dir="rtl"
     >
       {/* 🔹 Heading Section */}
@@ -647,38 +647,38 @@ export default function AboutPage() {
               ${
                 activeId === section.id
                   ? "md:w-[80vw] w-full md:h-[500px] h-full bg-[rgb(var(--teal-blue))] text-white"
-                  : "md:w-[5vw] w-full md:h-[500px] h-[70px]"
+                  : "md:w-[5vw] w-full md:h-[500px] h-[70px] "
               }`}
             onClick={() => setActiveId(section.id)}
           >
             {activeId === section.id ? (
-              <div className="flex flex-col md:flex-row-reverse items-start justify-start w-full h-full p-6 font-tajawal">
+              <div className="flex flex-col md:flex-row-reverse items-start justify-start w-full h-full p-4 font-tajawal">
                 {/* 🔹 Right Side (Image) */}
                 <div className="md:w-1/2 w-full h-full">
                   <img
                     src={section.img}
                     alt={section.title}
-                    className="object-contain w-full h-full p-4 border-t-[1px] border-l-[1px] border-black rounded-lg"
+                    className="object-contain w-full h-full  border-t-[1px] border-l-[1px] border-black rounded-lg"
                   />
                 </div>
 
                 {/* 🔹 Left Side (Text Content) */}
-                <div className="md:w-1/2 w-full text-right px-6">
+                <div className="md:w-1/2 w-full text-right ">
                   <span className="text-2xl font-bold text-black">{section.id}.</span>
                   <h2 className="text-3xl font-bold text-[rgb(var(--light-gray))]">{section.title}</h2>
                   <p className="text-lg text-[rgb(var(--light-gray))] mt-2">{section.description}</p>
                   <div className="mt-4">
-                    <Button text={section.cta} bgColor="black" textColor="text-white" px="px-6" py="py-2" />
+                    <Button text={section.cta} bgColor="black" textColor="text-white" px="px-16" py="py-8" />
                   </div>
                 </div>
               </div>
             ) : (
               // 🔹 Inactive Section (Vertical Text)
-              <div className="flex flex-row md:flex-col items-center justify-evenly h-full text-black">
-                <span className="text-lg border-2 border-black p-2 w-10 h-10 rounded-full flex items-center justify-center">
+<div className="flex md:flex-col md:items-center md:justify-evenly justify-center items-center h-full text-black space-y-4 md:space-y-0">
+                <span className="text-lg border-[1px] border-black p-2 w-10 h-10 rounded-full flex items-center justify-center">
                   {section.id}
                 </span>
-                <h2 className="text-xl font-bold transform md:rotate-90 whitespace-nowrap">
+                <h2 className="text-xl font-bold transform md:rotate-90 whitespace-nowrap mr-4">
                   {section.title}
                 </h2>
               </div>

@@ -426,14 +426,14 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="w-full fixed top-0 right-0 z-50 " dir="rtl">
-      <div className="max-w-full mr-auto flex md:flex-row-reverse items-center justify-between">
+    <nav className="w-full fixed top-0 right-0 z-50 p-4 md:px-6 " dir="rtl">
+      <div className="max-w-full mx-auto flex md:flex-row-reverse items-center  justify-between rounded-full p-4 ">
         {/* الشعار */}
         <Link href="/">
           <img 
-            src="/images/logo2.png" 
+            src="/images/logo-favicon.png" 
             alt="الشعار" 
-            className="h-[10vh] md:h-[20vh] w-auto md:w-[20vw] lg:w-auto transition-transform duration-300 hover:scale-105 border-[1px]  overflow-hidden rounded-b-4xl  bg-white"
+            className="h-[10vh] md:h-[10vh] bg-contain w-auto md:w-[10vw] lg:w-auto transition-transform duration-300 hover:scale-105  overflow-hidden "
           />
         </Link>
 
@@ -448,30 +448,40 @@ export default function Navbar() {
           text="ابدأ الآن"
           bgColor="bg-black"
           textColor="text-white"
-          borderColor="border-black/50"
+          borderColor="border-black"
           px="px-16"
           py="py-8"
           hoverBgColor="hover:bg-[rgb(var(--mexican-red))]"
           hoverTextColor="hover:text-white"
+          className={`rounded-full`}
+
           onClick={() => setIsOpen(true)}
         />
       </div>
 
       {/* قائمة التنقل الجانبية */}
       <div
-        className={`fixed top-0 right-0 w-full h-full bg-black text-[rgb(var(--light-gray))] transform ${
+        className={`fixed top-0 right-0 w-full h-full bg-[rgb(var(--teal-blue))]  text-[rgb(var(--light-gray))] transform ${
           isOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 flex flex-col items-center justify-center space-y-6 gap-4`}
+
+        style={{ backdropFilter: "blur(16px)", backgroundColor: "rgba(var(--teal-blue), 0.5)" }}
       >
+
+
+
+      
         {/* زر الإغلاق - باستخدام الزر المخصص */}
         <div className="">
         <Button 
           text={<X size={32} />} 
           bgColor="bg-[rgb(var(--mexican-red))]" 
           textColor="text-white"
-          borderColor="border-none"
+          borderColor="border-white"
           onClick={() => setIsOpen(false)}
           className="absolute top-4 left-4"
+           px="px-16"
+          py="py-8"
         />
         </div>
 
@@ -487,9 +497,9 @@ export default function Navbar() {
           bgColor="bg-white"
           textColor="text-black"
           borderColor="border-black/50"
-          px="px-8"
-          py="py-4"
-          hoverBgColor="hover:bg-black"
+          px="px-16"
+          py="py-8"
+          hoverBgColor="hover:bg-[rgb(var(--teal-blue))]"
           hoverTextColor="hover:text-white"
         />
       </div>
