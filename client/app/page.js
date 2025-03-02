@@ -793,14 +793,40 @@ export default function Home() {
       </div>
 
       <InfiniteTextCarousel />
-      <AboutPage />
+      {/* <AboutPage />
       <MeetOurTeam/>
       <HowToGetStart />
-      {/* <CoursesPage /> */}
+      <CoursesPage />
       <AwwwardsSection/>
       <PeoplePage />
-      {/* <Testimonials /> */}
-      <GetInTouch />
+      <Testimonials />
+      <GetInTouch /> */}
+
+
+<div>
+      {/* Assign IDs to sections */}
+     
+      <section id="about">
+        <AboutPage />
+      </section>
+      <section id="meetourteam">
+      <MeetOurTeam/>
+      </section>
+      <section id="howtogetstart">
+        <HowToGetStart />
+      </section>
+      <section id="awards">
+      <AwwwardsSection/>
+      </section>
+      <section id="peoplepage">
+      <PeoplePage />
+      </section>
+      <section id="contact">
+        <GetInTouch />
+      </section>
+
+      {/* Pass section IDs to Footer */}
+    </div>
     </>
   );
 }

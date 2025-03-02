@@ -462,8 +462,8 @@ export default function Navbar() {
       {/* قائمة التنقل الجانبية */}
       <div
         className={`fixed top-0 right-0 w-full h-full bg-[rgb(var(--teal-blue))]  text-[rgb(var(--light-gray))] transform ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 flex flex-col items-center justify-center space-y-6 gap-4`}
+          isOpen ? "translate-x-0" : "translate-x-full "
+        } transition-transform duration-300 flex flex-col items-center justify-center space-y-6 `}
 
         style={{ backdropFilter: "blur(16px)", backgroundColor: "rgba(var(--teal-blue), 0.5)" }}
       >
@@ -485,11 +485,13 @@ export default function Navbar() {
         />
         </div>
 
-        {/* روابط التنقل */}
-        <Link href="/" className="text-2xl md:text-6xl  hover:text-white" onClick={() => setIsOpen(false)}>الرئيسية</Link>
-        <Link href="/about" className="text-2xl md:text-6xl  hover:text-white" onClick={() => setIsOpen(false)}>من نحن</Link>
-        <Link href="/services" className="text-2xl md:text-6xl  hover:text-white" onClick={() => setIsOpen(false)}>الخدمات</Link>
-        <Link href="/contact" className="text-2xl md:text-6xl  hover:text-white" onClick={() => setIsOpen(false)}>اتصل بنا</Link>
+    {/* روابط التنقل */}
+<Link href="#" className="text-2xl md:text-4xl hover:text-white" onClick={() => setIsOpen(false)}>الرئيسية</Link>
+<Link href="#about" className="text-2xl md:text-4xl hover:text-white" onClick={() => setIsOpen(false)}>من نحن</Link>
+<Link href="#howtogetstart" className="text-2xl md:text-4xl hover:text-white" onClick={() => setIsOpen(false)}>الخدمات</Link>
+<Link href="#awards" className="text-2xl md:text-4xl hover:text-white" onClick={() => setIsOpen(false)}>الجوائز</Link>
+<Link href="#meetourteam" className="text-2xl md:text-4xl hover:text-white" onClick={() => setIsOpen(false)}>فريقنا</Link>
+<Link href="#contact" className="text-2xl md:text-4xl hover:text-white" onClick={() => setIsOpen(false)}>اتصل بنا</Link>
 
         {/* زر مخصص */}
         <Button
